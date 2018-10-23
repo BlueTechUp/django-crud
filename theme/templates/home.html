@@ -6,4 +6,67 @@
 <a href="{% url 'books_fbv:book_list' %}">Function Based Views</a><br>    
 <a href="{% url 'books_fbv_user:book_list' %}">Function Based Views with User Access</a><br>    
 <a href="{% url 'books_fbv_user:book_list' %}">BootStrap Front End</a><br>
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Contact List <small>by: Sajitha Liyanage</small></h1>
+        <hr/>
+        <table class="table table-striped" style="margin-top:30px;">
+          <thead>
+            <tr>
+              <th style="text-align:center;">Name</th>
+              <th style="text-align:center;">Email</th>
+              <th style="text-align:center;">Address</th>
+              <th style="text-align:center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody ng-controller="addcontrolle">
+            <tr>
+                <td>
+                  <div class="form-group">
+                    <input type="text" placeholder="Enter Name" class="form-control" ng-model="contact.name">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" placeholder="Enter Email" class="form-control" ng-model="contact.email">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" placeholder="Enter Address" class="form-control" ng-model="contact.address">
+                  </div>
+                </td>
+                <td>
+                  <center>
+                      <button class="btn btn-warning" ng-click="addData()">Create Contact</button>
+                  </center>
+                </td>
+                <td>
+                  <center>
+                      <button class="btn btn-info" ng-click="edit()">Update Contact</button>
+                  </center>
+                </td>
+            </tr>
+            <tr ng-repeat="contact in contactlist">
+              <td style="text-align:center;">{{contact.name}}</td>
+              <td style="text-align:center;">{{contact.email}}</td>
+              <td style="text-align:center;">{{contact.address}}</td>
+              <td  style="text-align:center;">
+                <center>
+                  <button type="button" class="btn btn-danger" ng-click="remove(contact._id)">Delete</button>
+                </center>
+              </td>
+              <td  style="text-align:center;">
+                <center>
+                  <button type="button" class="btn btn-success" ng-click="update(contact._id)">Update</button>
+                </center>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 {% endblock %}
