@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
 
-class ContactList(models.Model):
+
+class Contact(models.Model):
+
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -10,4 +12,4 @@ class ContactList(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('bootstrap_page/contact_list', kwargs={'pk': self.pk})
+        return reverse('bootstrap:bootstrap_list', kwargs={'pk': self.pk})

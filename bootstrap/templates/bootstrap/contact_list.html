@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<input type="hidden" value={{ id }}>
+ <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Contact List</h1>
+        <hr/>
+        <table class="table table-striped" style="margin-top:30px;">
+          <thead>
+            <tr>
+              <th style="text-align:center;">Name</th>
+              <th style="text-align:center;">Email</th>
+              <th style="text-align:center;">Address</th>
+              <th style="text-align:center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody >
+          	
+	            <tr {% if id > 0 %} hidden {% endif %}>
+                  <form method="post" action="{% url 'bootstrap:bootstrap_new' %}">{% csrf_token %}
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Name" class="form-control" name="name" value ={{name}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Email" class="form-control" name="email" value = {{email}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Address" class="form-control" name="address" value = {{address}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <center>
+	                  	 <input type="submit" value="Create Contact" class="btn btn-warning"  />
+	                      
+	                  </center>
+	                </td>
+	                <td>
+	                  <center>
+                        <input  class="btn btn-info" type="submit" value = "Update Contact" disabled />
+	                  </center>
+                  </td>
+                </form>
+              </tr>
+              
+              <tr {% if id == 0 %} hidden {% endif %}>
+                  <form method="post" action="{% url 'bootstrap:bootstrap_update' id %}">{% csrf_token %}
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Name" class="form-control" name="name" value ={{name}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Email" class="form-control" name="email" value = {{email}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <div class="form-group">
+	                    <input type="text" placeholder="Enter Address" class="form-control" name="address" value = {{address}}>
+	                  </div>
+	                </td>
+	                <td>
+	                  <center>
+	                  	 <input type="submit" value="Create Contact" class="btn btn-warning disabled"  />
+	                      
+	                  </center>
+	                </td>
+	                <td>
+	                  <center>
+                        <input  class="btn btn-info" type="submit" value = "Update Contact" />
+	                  </center>
+                  </td>
+                </form>
+	            </tr>
+    
+            {% for contact in contact_list %}
+            <tr>
+              <td style="text-align:center;">{{contact.name}}</td>
+              <td style="text-align:center;">{{contact.email}}</td>
+              <td style="text-align:center;">{{contact.address}}</td>
+              <td  style="text-align:center;">
+                  <form method="post" action="{% url 'bootstrap:bootstrap_delete' contact.id%}">{% csrf_token %}
+                  <center>
+                      <input type="submit" value="Delete" class="btn btn-warning"  />
+                </center>
+                  </form>
+              </td>
+              <td  style="text-align:center;">
+                <center>
+                    <form method="post" action="{% url 'bootstrap:bootstrap_select' contact.id%}">{% csrf_token %}
+                        <input type="submit" value="Update" class="btn btn-success"  />
+                    </form>
+                </center>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

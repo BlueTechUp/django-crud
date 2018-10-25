@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'books_cbv',
     'books_fbv',
     'books_fbv_user',
-    'bootstrap_page'
+    'bootstrap'
 ]
 
 MIDDLEWARE = [

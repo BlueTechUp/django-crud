@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2><a href="{% url 'bootstrap:bootstrap_list' %}">Books CBV</a>: Update</h2>
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

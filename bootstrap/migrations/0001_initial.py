@@ -1,3 +1,4 @@
+
 from django.db import migrations, models
 
 
@@ -10,12 +11,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ContactList',
+            name='Contact',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
                 ('email', models.CharField(max_length=200)),
-                ('address', models.CharField(max_length=200))
+                ('address', models.CharField(max_length=200)),
             ],
         ),
     ]
