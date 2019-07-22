@@ -42,4 +42,10 @@ def contact_delete(request, pk):
 def contact_select(request, pk, template_name='bootstrap/contact_list.html'):
     contact = Contact.objects.get(pk=pk)
     arrVal = Contact.objects.all()
-    return render(request, template_name, {'name': contact.name, 'email': contact.email, 'address':contact.address, 'id': contact.id+1, 'contact_list': arrVal})
+    return render(request, 
+                  template_name, 
+                  {'name': contact.name, 
+                   'email': contact.email, 
+                   'address':contact.address, 
+                   'id': contact.id+1, 
+                   'contact_list': arrVal})
